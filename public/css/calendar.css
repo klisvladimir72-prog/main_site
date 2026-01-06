@@ -1,0 +1,878 @@
+@import "birthday.css";
+
+tr {
+    /* border: 1px solid #000000; */
+    line-height: 20px;
+}
+
+td {
+    /* border: 1px solid #000000; */
+    text-align: center;
+    width: 22px;
+    position: relative;
+    /* Для позиционирования ::after */
+}
+
+th {
+    /* border: 1px solid #000000; */
+}
+
+
+.wrap {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #000000;
+}
+
+.calendar__wrap {
+    font-family: Roboto;
+    /* position: fixed; */
+    position: absolute;
+    top: 7vw;
+    right: 5vh;
+    width: 350px;
+    height: 340px;
+    padding: 0;
+    font-weight: 500;
+    z-index: 10;
+    transition: all .3s ease-in-out;
+}
+
+.calendar__thead-fulldate {}
+
+.calendar__thead-th {
+    position: relative;
+}
+
+.calendar__bg {
+    position: absolute;
+    /* background-image: url(../img/calendar/summer_1.jpg); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    border-radius: 15px;
+}
+
+.btn-other-month svg {
+    opacity: 0.5;
+    transition: all .3s ease-in-out;
+}
+
+.btn-other-month svg:hover {
+    opacity: 1;
+    scale: 1.1;
+}
+
+.btn-other-month svg:active {
+    opacity: 0.5;
+    scale: 1;
+}
+
+.calendar__table {
+    position: relative;
+    border-collapse: collapse;
+    border: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.calendar__table-thead {
+    height: 120px;
+}
+
+.calendar__body {
+    height: fit-content;
+    background-color: rgb(243, 240, 240);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.thead__wrap {
+    position: relative;
+    display: flex;
+    padding: 0 10px 0;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    z-index: 10;
+}
+
+.btn-menu {
+    position: absolute;
+    top: -13px;
+    left: 5px;
+    opacity: 0.5;
+    transition: all .3s ease-in;
+}
+
+.btn-menu:hover {
+    scale: 1.05;
+    opacity: 1;
+}
+
+.btn-menu:active {
+    scale: 1;
+}
+
+.btn-fix {
+    position: absolute;
+    top: -13px;
+    right: 15px;
+    transform: rotate(75deg);
+    transition: all .3s ease-in;
+}
+
+.btn-fix:hover {
+    transform: rotate(0deg);
+    scale: 1.2;
+}
+
+.btn-fix:active {
+    scale: 1;
+}
+
+
+.btn-fix svg {
+    fill: rgb(114, 111, 111);
+}
+
+.btn-fix:hover svg {
+    fill: red;
+}
+
+.btn-fix:active svg {
+    fill: red;
+}
+
+.btn-fix-active {
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    transform: rotate(0deg);
+    transition: all .3s ease-in;
+}
+
+.btn-fix-active:hover {
+    transform: rotate(75deg);
+    scale: 1.2;
+}
+
+.btn-fix-active:active {
+    scale: 1;
+}
+
+.btn-fix-active svg {
+    fill: red;
+}
+
+.btn-fix-active:hover svg {
+    fill: rgb(114, 111, 111);
+}
+
+.btn-fix-active:active svg {
+    fill: rgb(114, 111, 111);
+}
+
+.thead__wrap-today {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    margin-right: auto;
+    align-items: center;
+}
+
+.calendar__year {
+    font-size: 20px;
+}
+
+.calendar__month {
+    line-height: 30px;
+    cursor: pointer;
+    font-size: 25px;
+    transition: all .3s ease-in-out;
+}
+
+.calendar__month:hover {
+    scale: 1.1;
+    transform: translate(10px, 5px);
+    text-shadow: 0 1px 10px #fff;
+}
+
+/* TBODY */
+.calendar__body-daysweek {
+    font-weight: 600;
+}
+
+.days__other-month {
+    color: rgb(123, 129, 125) !important;
+}
+
+.holidays {
+    color: red;
+}
+
+.scroll {
+    position: fixed;
+    top: 95px;
+    right: 95px;
+    width: auto;
+    height: auto;
+    z-index: 100;
+}
+
+.scroll .calendar__table-thead {
+    height: 100%;
+}
+
+.scroll .calendar__body {
+    display: none;
+}
+
+.scroll .calendar__birth-wrap {
+    display: none;
+}
+
+.days__present {
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.days__present:hover {
+    font-size: 1.15rem;
+    text-shadow: 3px 3px 3px black;
+}
+
+.days__present::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 30px;
+    border-radius: 20%;
+    z-index: 1;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+
+.days__present:hover::after {
+    opacity: 0.3;
+}
+
+.day__now {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.day__now::after {
+    opacity: 1;
+    box-shadow: 4px 4px 8px 0px rgb(249 1 1 / 40%);
+    border: 2px solid rgb(255, 0, 0) !important;
+
+}
+
+.day__active::after {
+    opacity: 1;
+    box-shadow: 4px 4px 8px 0px rgb(50 51 51 / 40%);
+    border: 2px solid rgb(50, 51, 51);
+}
+
+.calendar__btn-roll {
+    position: absolute;
+    top: -3px;
+    right: -17px;
+    width: 20px;
+    height: 20px;
+}
+
+/* Блок с датами рождения */
+.calendar__birth-wrap {
+    display: none;
+    width: 100%;
+    border: 1px solid #000000;
+    border-top: none;
+    background-color: inherit;
+}
+
+.calendar__birth-wrap-active {
+    display: block;
+}
+
+.birth-descr {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    padding: 5px 0 5px 15px;
+}
+
+.birth-peoples {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    padding: 5px;
+}
+
+.birth-select {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+
+.birth-select-title {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.birth-select-title-active svg {
+    transform: rotateX(180deg);
+}
+
+.birth-ul {
+    position: absolute;
+    display: none;
+    min-width: 130px;
+    padding: 5px !important;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+    border-radius: 3px;
+    background-color: #71A7E2;
+    user-select: none;
+}
+
+.birth-ul-active {
+    display: flex;
+}
+
+.birth-li:focus {
+    transform: scale(1.05);
+}
+
+.birth-li:hover {
+    transform: scale(1.05);
+}
+
+.birth-li:activ {
+    transform: scale(1.05);
+}
+
+.btn-birthday {
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    right: -24px;
+}
+
+.btn-birthday-active {
+    bottom: -26px;
+}
+
+.btn-birthday-hidden {
+    display: none;
+}
+
+.birth__item-jubilei {
+    background-color: #3155b942;
+}
+
+/* EVENTS */
+.calendar__events-wrap {
+    position: relative;
+    top: -340px;
+    left: -325px;
+    width: 325px;
+    min-height: 340px;
+    height: fit-content;
+    background-color: rgba(75, 88, 137, 0.9);
+    color: rgb(255, 255, 255);
+    border-radius: 15px 0 0 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.calendar__events {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: auto;
+}
+
+.calendar__events-descr {
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.calendar__events-date {
+    font-size: 18px;
+}
+
+.calendar__events-list {
+    width: 100%;
+    height: auto;
+    /* background-color: yellow; */
+}
+
+.calendar__events-birthday {
+    width: 100%;
+    height: fit-content;
+    /* background-color: rgb(122, 100, 100); */
+}
+
+.birthday-descr {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.birthday-list {
+    font-size: 18px;
+}
+
+/* ADMIN__ADD_EVENTS */
+.admin__events-wrapper {
+    position: absolute;
+    top: 340px;
+    left: 0;
+    width: inherit;
+    height: 200px;
+    padding: 15px;
+    /* background-color: rgba(247, 247, 247, 0.58); */
+    background-color: rgba(75, 88, 137, 0.9);
+    color: rgb(255, 255, 255);
+    border-radius: 0 0 8px 8px;
+}
+
+.admin__events-current-block {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 100%;
+}
+
+.current-block__title {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.current-block__list {
+    margin-bottom: auto !important;
+}
+
+.current-block__btn {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 1em !important;
+    color: #ffffff;
+    font-weight: 900;
+    transition: all .2s ease-in-out;
+}
+
+.current-block__btn:hover {
+    scale: 1.1;
+    transform: translate(0em, -0.2em);
+    text-shadow: 4px 4px 3px #a9a9a9;
+}
+
+.current-block__btn:active {
+    scale: 1;
+    transform: translate(0, 0);
+    color: #ffffff;
+}
+
+.admin__events-new-block {
+    height: 100%;
+}
+
+.new-block__title {
+    margin: 0;
+    margin-bottom: 25px;
+    font-size: 19px;
+}
+
+.new-block__form {}
+
+.new-block__inputs {
+    margin-bottom: 15px;
+}
+
+.inputs__title-wrap {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.new-event__input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #ffffff;
+    height: 1.25em;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+}
+
+.new-event__label {
+    position: absolute;
+    top: -0.85em;
+    left: 4px;
+    font-size: 0.85em;
+    color: #a9a9a9;
+    transition-duration: .2s;
+    cursor: text;
+}
+
+.new-event__input:not(:placeholder-shown)+.new-event__label {
+    color: #a9a9a9;
+    scale: 0.9;
+    translate: -0.6em -1.55em;
+}
+
+.inputs__descr-wrap {
+    position: relative;
+}
+
+.new-block__btn-wrap {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn__wrap-btn {
+    padding: 1em !important;
+    transition: all .2s ease-in-out;
+}
+
+.btn__wrap-btn:hover {
+    scale: 1.1;
+    transform: translate(0em, -0.2em);
+    text-shadow: 4px 4px 3px #45d145;
+}
+
+.btn__wrap-btn:active {
+    scale: 1;
+    transform: translate(0, 0);
+    /* text-shadow: 4px 4px 3px #45d145; */
+    color: #45d145;
+}
+
+.btn-wrap__btn-add {
+    color: #ffffff;
+}
+
+.btn-wrap__btn-cancel {
+    color: #ffffff;
+}
+
+.btn-wrap__btn-cancel:hover {
+    text-shadow: 4px 4px 3px #d14545;
+}
+
+.btn-wrap__btn-cancel:active {
+    color: #d14545;
+    /* text-shadow: 4px 4px 3px #d14545; */
+}
+
+.current-block__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.current-block__item:not(:last-child) {
+    margin-bottom: 0.3em;
+}
+
+.current-block__item:hover .item-descr {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.current-block__item:hover .item-title {
+    font-size: 1.05em;
+}
+
+.current-block__item:hover .item-btn {
+    width: 1em;
+    height: 1em;
+}
+
+.current-block__item:hover .item-btn-change svg {
+    fill: #000000;
+}
+
+.current-block__item:hover .item-btn-remove polygon {
+    fill: #d14545;
+}
+
+.item-wrap {
+    width: 100%;
+    height: 1.1em;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-title {
+    transition: all .3s ease-in-out;
+}
+
+.item-descr {
+    font-style: italic;
+    font-size: 0.9em;
+    width: calc(100% - 1em);
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 1.2em;
+    left: 1em;
+    padding: 0 0.5em 0 1em;
+    z-index: 1;
+    background-color: #414c77;
+    border-radius: 4px;
+    transform: translateY(-10px);
+    transition: all .3s ease-in-out;
+}
+
+.item-wrap-btn {
+    display: flex;
+    gap: 0.5em;
+}
+
+.item-btn {
+    width: 0.8em;
+    height: 0.8em;
+    transition: all .3s ease-in-out;
+}
+
+.item-btn-change:hover {
+    transform: rotate(-45deg);
+}
+
+.item-btn-remove:hover {
+    transform: rotate(90deg);
+}
+
+/* BIRTHDAY VIEW */
+.admin__view-birth {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    transition: all .3s ease-in-out;
+}
+
+.admin__view-birth path,
+.admin__view-birth polygon {
+    transition: all .3s ease-in-out;
+}
+
+.admin__view-birth:hover {
+    transform: scale(1.1);
+}
+
+.admin__view-birth:hover polygon {
+    fill: #679b44;
+}
+
+.admin__view-birth:hover path {
+    transform: rotateY(10px);
+    fill: #d71717;
+}
+
+
+/* ANIMATIONS */
+.swing-in-top-fwd {
+    -webkit-animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+    animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+.swing-out-top-fwd {
+    -webkit-animation: swing-out-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+    animation: swing-out-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+@-webkit-keyframes swing-in-top-fwd {
+    0% {
+        -webkit-transform: rotateX(-100deg);
+        transform: rotateX(-100deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        -webkit-transform: rotateX(0deg);
+        transform: rotateX(0deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes swing-in-top-fwd {
+    0% {
+        -webkit-transform: rotateX(-100deg);
+        transform: rotateX(-100deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        -webkit-transform: rotateX(0deg);
+        transform: rotateX(0deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Анимация исчезновения (в обратном порядке) */
+@-webkit-keyframes swing-out-top-fwd {
+    0% {
+        -webkit-transform: rotateX(0deg);
+        transform: rotateX(0deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: rotateX(-100deg);
+        transform: rotateX(-100deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes swing-out-top-fwd {
+    0% {
+        -webkit-transform: rotateX(0deg);
+        transform: rotateX(0deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: rotateX(-100deg);
+        transform: rotateX(-100deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+
+
+/* Появление справа налево */
+.swing-in-right {
+    -webkit-animation: swing-in-right 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+    animation: swing-in-right 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+/* Исчезновение справа налево */
+.swing-out-right {
+    -webkit-animation: swing-out-right 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+    animation: swing-out-right 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+/* Анимация появления */
+@-webkit-keyframes swing-in-right {
+    0% {
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes swing-in-right {
+    0% {
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Анимация исчезновения (в обратном порядке) */
+@-webkit-keyframes swing-out-right {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes swing-out-right {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+        opacity: 0;
+        visibility: hidden;
+    }
+}

@@ -1,0 +1,409 @@
+.modal-content__birth {
+    /* font-family: Roboto; */
+    max-width: 1000px !important;
+}
+
+.birth__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.birth__header-title {
+    margin: 0;
+    margin-left: 15px;
+    font-weight: 900;
+    font-size: 20px;
+    text-shadow: 5px 3px 4px #5d6ea9;
+}
+
+.birth__header-btn-add {
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: auto;
+    transition: all .3s ease-in-out;
+
+}
+
+.birth__header-btn-add svg {
+    width: inherit;
+    height: inherit;
+    transition: all .3s ease-in-out;
+}
+
+.birth__header-btn-add:hover svg {
+    fill: green;
+}
+
+.birth__header-search-wrap {}
+
+.birth__header-search-icon {}
+
+.birth__header-search-input {}
+
+.birth__header-close-btn {
+    width: 1.3em;
+    height: 1.3em;
+    transition: all .3s ease-in-out;
+}
+
+.birth__header-close-btn polygon {
+    transition: all .3s ease-in-out;
+}
+
+.birth__header-close-btn:hover {
+    transform: rotateZ(90deg);
+}
+
+.birth__header-close-btn:hover polygon {
+    fill: #CD5257;
+}
+
+.birth__table {
+    width: 100%;
+    background-color: #dfdfdf;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 #fff;
+    font-size: 15px;
+    line-height: 25px;
+    margin: 0;
+    text-align: center;
+
+}
+
+.table-thead {}
+
+.thead-tr {}
+
+.thead-th {
+    background: linear-gradient(#586cb3, #4b5889e6);
+    border-left: 1px solid #555;
+    border-right: 2px solid #8f8f8f;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #333;
+    box-shadow: inset 0 1px 0 #999;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 2px;
+    position: relative;
+    text-shadow: 3px 3px 3px #000;
+}
+
+.birth__table .thead-th:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    margin: 1px 0 0;
+    left: 0;
+    top: 25%;
+    height: 25%;
+    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .08));
+
+}
+
+.birth__table .thead-th:first-child {
+    border-left: 1px solid #777;
+    box-shadow: inset 1px 1px 0 #999;
+}
+
+.birth__table .thead-th:last-child {
+    box-shadow: inset 0 1px 0 #8f8f8f;
+}
+
+.birth__table td {
+    border-right: 1px solid #fff;
+    border-left: 1px solid #e8e8e8;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 10px 5px;
+    position: relative;
+    text-align: left;
+    box-shadow: inset 0 0 0 #fff;
+    transition: all .3s ease-in-out;
+}
+
+.birth__table td:first-child {
+    /* width: 50%; */
+    text-align: center;
+}
+
+.table-tbody tr .item-btn-change svg {
+    transition: all .3s ease-in-out;
+}
+
+.table-tbody tr .item-btn-remove polygon {
+    transition: all .3s ease-in-out;
+}
+
+.birth__table td:last-child {
+    /* width: 20%; */
+    border-right: 1px solid #e8e8e8;
+}
+
+.table-tbody:hover td {
+    color: transparent;
+    text-shadow: 0 0 0.5px #aaa;
+}
+
+.table-tbody:hover tr:hover td {
+    color: #000000;
+    text-shadow: 0 1px 10px #fff;
+}
+
+.table-tbody:hover tr:hover .item-btn-change svg {
+    fill: #000000;
+}
+
+.table-tbody:hover tr:hover .item-btn-remove polygon {
+    fill: #CD5257;
+}
+
+.th-number {
+    width: 6%;
+}
+
+.th-post {
+    width: 30%;
+}
+
+.th-name {
+    width: 26%;
+}
+
+.th-rank {
+    width: 13%;
+}
+
+.th-birth {}
+
+.th-btn {}
+
+.table-tbody {}
+
+.item-birth {
+    width: 19%;
+}
+
+.birth__item-btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.item-btn-change,
+.item-btn-remove {
+    width: 1em;
+    height: 1em;
+    transition: all .3s ease-in-out;
+}
+
+.item-btn-change {
+    fill: #8f8f8f;
+}
+
+.item-btn-remove polygon {
+    fill: #8f8f8f;
+}
+
+.item-name-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.4em;
+}
+
+.item-name-wrap span:first-child {
+    font-weight: 900;
+}
+
+/* Изменение дня рождения пользователя */
+.modal-content__birth-change {
+    position: relative;
+    max-width: 600px;
+    background: rgba(75, 88, 137, 0.9) !important;
+}
+
+.birth__change-title {
+    margin: 0;
+    margin-bottom: 30px;
+    color: #ffffff;
+    font-size: 22px;
+}
+
+.modal-change__form {}
+
+.modal-change__form-wrap {}
+
+.form__input-wrap {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.form__input-input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #ffffff;
+    height: 1.25em;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+}
+
+.form__input-label {
+    position: absolute;
+    top: -0.85em;
+    left: 4px;
+    font-size: 0.85em;
+    color: #a9a9a9;
+    transition-duration: .2s;
+    cursor: text;
+}
+
+.form__input-input:not(:placeholder-shown)+.form__input-label {
+    color: #a9a9a9;
+    scale: 0.9;
+    translate: -0.6em -1.55em;
+}
+
+.modal-change__input-date {
+    color: #ffffff;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+}
+
+.modal-change__btn-wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.modal-change__btn-exit {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 1em;
+    height: 1em;
+    transition: all .3s ease-in-out;
+}
+
+.modal-change__btn-exit polygon {
+    transition: all .3s ease-in-out;
+}
+
+.modal-change__btn-exit:hover {
+    transform: rotateZ(90deg);
+}
+
+.modal-change__btn-exit:hover polygon {
+    fill: #CD5257;
+}
+
+.modal-change__btn-save,
+.modal-change__btn-close {
+    color: #ffffff;
+    font-size: 18px;
+    padding: 15px !important;
+    transition: all .3s ease-in-out;
+}
+
+.modal-change__btn-save:hover {
+    text-shadow: 1px 1px 3px green;
+    transform: translateY(-0.5em);
+}
+
+.modal-change__btn-close:hover {
+    text-shadow: 1px 1px 3px red;
+    transform: translateY(-0.5em);
+}
+
+/* View birthdayList for focus date */
+.birthday-list__item-birth {
+    width: 100%;
+    margin-bottom: 9px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.item-birth__number {
+    width: 8%;
+}
+
+.item-birth__name-wrap {
+    position: relative;
+    width: 92%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3px;
+}
+
+.item-birth__wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: all .3s ease-in-out;
+}
+
+.item-birth__name {
+    font-size: 0.9em;
+}
+
+.item-birth__title {
+    transition: all .3s ease-in-out;
+}
+
+.item-birth__year {
+    width: 23%;
+    transition: all .3s ease-in-out;
+}
+
+.item-birth__descr {
+    width: 100%;
+    padding: 2px 3px 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-style: italic;
+    font-size: 0.8em;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+    background-color: #414c77;
+    border-radius: 4px;
+    transition: all .3s ease-in-out;
+}
+
+.birthday-list__item-birth:hover .item-birth__wrap {
+    text-shadow: 1px 1px 3px #ffffff;
+}
+
+.birthday-list__item-birth:hover .item-birth__year {
+    text-shadow: 1px 1px 3px #ffffff;
+}
+
+.birthday-list__item-birth:hover .item-birth__number {
+    text-shadow: 1px 1px 3px #ffffff;
+}
+
+.birthday-list__item-birth:hover .item-birth__descr {
+    transform: translateY(2.9em);
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.birth-anniversary {
+    text-shadow: 2px 2px 3px red;
+}

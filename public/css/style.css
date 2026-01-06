@@ -1,0 +1,135 @@
+@import 'home.css';
+@import 'calendar.css';
+@import 'stylesheets.css';
+@import 'structure.css';
+
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+@font-face {
+    font-family: "OpenSans";
+    src: local("OpenSans-Regular"),
+        url("../fonts/OpenSans-Regular.woff2") format("woff2"),
+        url("../fonts/OpenSans-Regular.woff") format("woff");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans";
+    src: local("OpenSans-Light"),
+        url("../fonts/OpenSans-Light.woff2") format("woff2"),
+        url("../fonts/OpenSans-Light.woff") format("woff");
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans";
+    src: local("OpenSans-SemiBold"),
+        url("../fonts/OpenSans-SemiBold.woff2") format("woff2"),
+        url("../fonts/OpenSans-SemiBold.woff") format("woff");
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+}
+
+a {
+    color: inherit;
+    columns: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    min-width: 320px;
+    font-family: "OpenSans", sans-serif;
+    font-weight: 400;
+    user-select: none;
+}
+
+span {
+    user-select: unset;
+}
+
+input {
+    outline: none;
+}
+
+/* glob */
+
+.list-reset {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.btn-reset {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+}
+
+.container {
+    max-width: 1300px;
+}
+
+.container__state {
+    max-width: 1740px;
+}
+
+.section__title {
+    margin: 0;
+    margin-bottom: 22px;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 130%;
+    color: #1C1C1C;
+}
+
+.section__descr {
+    margin: 0;
+    margin-bottom: 50px;
+}
+
+.section__offset {
+    padding-top: 25px;
+    padding-bottom: 50px;
+}
+
+:root {
+    --gap: 30px;
+}
+
+
+.lazy-section {
+
+    transition: opacity 0.3s ease;
+}
+
+.lazy-section.loaded {
+    opacity: 1;
+}
+
+.content-placeholder {
+    color: #888;
+}
